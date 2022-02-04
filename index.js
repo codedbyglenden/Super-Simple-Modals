@@ -1,4 +1,4 @@
-import modal from './partials/modal';
+import modal from './modal';
 
 const openModal = document.getElementById( 'open-modal' );
 if ( openModal ) {
