@@ -1,0 +1,71 @@
+{
+	"name": "super-simple-modals",
+	"version": "1.0.0",
+	"description": "A simple modal package created in vanilla JavaScript.",
+	"private": false,
+	"scripts": {
+		"production": "gulp scss --gulpfile compilers/gulpfile.js && webpack --config compilers/webpackJs.config.js --mode production",
+		"test-js": "eslint assets/src/**/*.js",
+		"test-styles": "stylelint 'assets/src/scss/**/*'",
+		"fix-js": "eslint assets/src/**/*.js --fix",
+		"fix-styles": "stylelint 'assets/src/scss/**/*' --fix",
+		"watch": "gulp --gulpfile compilers/gulpfile.js",
+		"buildScss": "gulp scss --gulpfile compilers/gulpfile.js",
+		"buildJs": "webpack --config compilers/webpackJs.config.js --mode development"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TheOneAndOnlyZulu/Modals"
+	},
+	"keywords": [
+		"starter",
+		"wordpress",
+		"theme"
+	],
+	"author": "TheOneAndOnlyZulu",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/TheOneAndOnlyZulu/Modals/issues"
+	},
+	"homepage": "https://github.com/TheOneAndOnlyZulu/Modals",
+	"devDependencies": {
+		"@babel/core": "^7.8.3",
+		"@babel/plugin-syntax-dynamic-import": "^7.2.0",
+		"@babel/plugin-transform-react-constant-elements": "^7.6.0",
+		"@babel/plugin-transform-react-inline-elements": "^7.2.0",
+		"@babel/plugin-transform-runtime": "^7.6.0",
+		"@babel/preset-env": "^7.9.6",
+		"@babel/preset-react": "^7.9.4",
+		"@babel/runtime": "^7.6.0",
+		"@wordpress/babel-preset-default": "^4.14.0",
+		"autoprefixer": "^9.7.6",
+		"babel-loader": "^8.1.0",
+		"babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+		"compression-webpack-plugin": "^3.1.0",
+		"eslint": "^7.23.0",
+		"gulp": "^4.0.2",
+		"gulp-autoprefixer": "^7.0.1",
+		"gulp-clean-css": "^4.2.0",
+		"gulp-cli": "^2.2.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-plumber": "^1.2.1",
+		"gulp-rename": "^2.0.0",
+		"gulp-sass": "^4.0.2",
+		"gulp-uglifycss": "^1.1.0",
+		"path": "^0.12.7",
+		"postcss-loader": "^3.0.0",
+		"sass": "^1.26.5",
+		"stylelint": "^9.6.0",
+		"stylelint-config-wordpress": "^13.1.0",
+		"stylelint-scss": "^3.3.1",
+		"terser-webpack-plugin": "^2.1.0",
+		"uglifyjs-webpack-plugin": "^2.2.0",
+		"webpack": "^4.40.2",
+		"webpack-cli": "^3.3.9",
+		"webpack-dev-server": "^3.8.1",
+		"webpack-shell-plugin": "^0.5.0",
+		"webpack-stream": "^5.2.1",
+		"http-server": "^14.1.0"
+	},
+	"dependencies": {}
+}

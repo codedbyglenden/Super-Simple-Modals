@@ -1,0 +1,5 @@
+.modal{background-color:rgba(0,0,0,.6);z-index:10000000;height:100vh;width:100vw;display:grid;place-items:center;padding:24px;position:absolute;top:0;left:0;right:0;bottom:0}
+.modal-buttons{display:flex}.modal button{cursor:pointer}.modal__container{width:100%;max-width:500px;background-color:#fff;padding:40px;border-radius:8px}
+.modal__container .btn{margin:8px 0;width:calc(50% - 8px);font-weight:700}
+.modal__container .btn:first-child{margin-right:16px}.modal__content{margin-top:24px}
+.modal__content .title{margin-bottom:8px}

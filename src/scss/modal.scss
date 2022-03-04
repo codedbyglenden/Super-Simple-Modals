@@ -1,23 +1,32 @@
 .modal {
 	position: fixed;
-	background-color: rgba(0, 0 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.6);
 	z-index: 10000000;
 	height: 100vh;
 	width: 100vw;
 	display: grid;
 	place-items: center;
 	padding: 24px;
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+	&-buttons {
+		display: flex;
+	}
+
+	button {
+		cursor: pointer;
+	}
 
 	&__container {
+		width: 100%;
 		max-width: 500px;
 		background-color: rgba(255, 255, 255, 1);
 		padding: 40px;
 		border-radius: 8px;
-		border: 2px solid rgba(0, 0 0, 1);
-
-		p {
-			margin: 8px 0 32px;
-		}
 
 		.btn {
 			margin: 8px 0;
@@ -35,14 +44,6 @@
 
 		.title {
 			margin-bottom: 8px;
-		}
-
-		textarea {
-			width: 100%;
-			min-height: 112px;
-			border-radius: 4px;
-			padding: 12px;
-			border: 2px solid rgba(0, 0 0, 1);
 		}
 	}
 }
