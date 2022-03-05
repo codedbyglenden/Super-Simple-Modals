@@ -16,7 +16,7 @@ The <a href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/wiki">Gith
 
 ## Help me, I'm stuck!
 
-Read through the <a href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/wiki">wiki</a> and still can't get it to work? Pop over to the discussions board, and we'll give you a hand.
+Read through the <a href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/wiki">wiki</a> and still can't get it to work? Pop over to the <a href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/discussions">discussions board</a>, and we'll give you a hand.
 
 ## I've got an idea?
 
