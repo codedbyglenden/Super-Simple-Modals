@@ -2,6 +2,7 @@
 	"name": "super-simple-modals",
 	"version": "1.0.0",
 	"description": "A simple modal package created in vanilla JavaScript.",
+	"main": "dist/js/modal.min.js",
 	"private": false,
 	"scripts": {
 		"production": "gulp scss --gulpfile compilers/gulpfile.js && webpack --config compilers/webpackJs.config.js --mode production",
@@ -18,12 +19,12 @@
 		"url": "https://github.com/TheOneAndOnlyZulu/Modals"
 	},
 	"keywords": [
-		"starter",
-		"wordpress",
-		"theme"
+		"Modal",
+        "Vanilla JS",
+        "JavaScript"
 	],
 	"author": "TheOneAndOnlyZulu",
-	"license": "ISC",
+	"license": "GNU GPLv3",
 	"bugs": {
 		"url": "https://github.com/TheOneAndOnlyZulu/Modals/issues"
 	},
