@@ -1,7 +1,7 @@
 /**
- * Stupid Simple Modal Class.
+ * Super Simple Modal Class.
  */
-class StupidSimpleModal {
+class SuperSimpleModal {
 
 	/**
 	 * Remove the modal & apply focus to the original button.

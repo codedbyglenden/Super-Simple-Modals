@@ -3,14 +3,14 @@
 	'use strict';
 
 	// Check if ssm is defined.
-	if ( 'undefined' !== typeof StupidSimpleModal ) {
+	if ( 'undefined' !== typeof SuperSimpleModal ) {
 
 		// Check if the open modal button exists.
 		const openModal = document.getElementById( 'open-modal' );
 		if ( openModal ) {
 
 			// Initiate the ssm class.
-			const modal = new StupidSimpleModal();
+			const modal = new SuperSimpleModal();
 
 			// Click handler 
 			openModal.addEventListener( 'click', (e) => {
