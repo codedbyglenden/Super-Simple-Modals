@@ -46,7 +46,11 @@
       */
       function remove() {
         var initiatorButton = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-        document.getElementById('preview-modal').remove();
+        var modal = document.getElementById('preview-modal');
+
+        if (modal) {
+          modal.remove();
+        }
 
         if (initiatorButton) {
           initiatorButton.focus();
@@ -102,11 +106,11 @@
         * think it's blocked by another script.
         */
 
-        document.body.addEventListener('keypress', function (e) {
+        document.body.addEventListener('keydown', function (e) {
           var event = e || window.event;
 
           if ('key' in event ? event.key === 'Escape' || event.key === 'Esc' : event.keyCode === 27) {
-            modal.remove();
+            _this.remove(initiatorButton);
           }
         }); // Add the continue with this action callback.
 

@@ -8,7 +8,12 @@ class SuperSimpleModal {
 	* @param {*} initiatorButton The div clicked to open the modal.
 	*/
 	remove( initiatorButton = false ) {
-		document.getElementById( 'preview-modal' ).remove();
+		
+		const modal = document.getElementById( 'preview-modal' );
+
+		if ( modal ) {
+			modal.remove();
+		}
 		
 		if ( initiatorButton ) {
 			initiatorButton.focus();
@@ -69,15 +74,13 @@ class SuperSimpleModal {
 		});
 		
 		/**
-		* When the user clicks escape remove the modal.
-		* TODO: Fix this, keypress is detected but not for the escape key,
-		* think it's blocked by another script.
-		*/
-		document.body.addEventListener( 'keypress', function(e) {
+		 * Hit the escape key to exit the modal.
+		 */
+		document.body.addEventListener( 'keydown', (e) => {
 			const event = e || window.event;
 			
 			if ( 'key' in event ? ( event.key === 'Escape' || event.key === 'Esc') : ( event.keyCode === 27 ) ) {
-				modal.remove();
+				this.remove( initiatorButton );
 			}
 		});
 		
