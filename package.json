@@ -1,12 +1,12 @@
 {
   "name": "super-simple-modals",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple modal package created in vanilla JavaScript.",
-  "main": "dist/super-simple-modals.cjs.js",
+  "main": "dist/super-simple-modals.min.js",
   "module": "dist/super-simple-modals.esm.js",
-  "browser": "dist/super-simple-modals.umd.js",
   "scripts": {
-    "build": "rollup -c && gulp scss",
+    "build": "rollup -c --environment NODE_ENV:production && gulp scss",
+    "dev": "rollup -c --environment NODE_ENV:development && gulp scss",
     "test": "npx eslint src/**/*.js",
     "pretest": "npm run build",
     "serve": "http-server"
@@ -33,6 +33,8 @@
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.0.2",
     "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-json": "^4.1.0",
+    "rollup-plugin-terser": "^7.0.2",
     "eslint": "^8.10.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
@@ -43,14 +45,16 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglifycss": "^1.1.0",
+    "http-server": "^14.1.0",
     "rollup": "^2.69.2",
     "sass": "^1.26.5",
     "stylelint": "^9.6.0",
-    "stylelint-scss": "^3.3.1",
-    "http-server": "^14.1.0"
+    "stylelint-scss": "^3.3.1"
   },
   "files": [
     "dist",
     "src"
-  ]
+  ],
+  "dependencies": {
+  }
 }

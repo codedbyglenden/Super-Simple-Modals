@@ -1,5 +1,3 @@
-import SuperSimpleModal from '../dist/super-simple-modals.esm.js';
-
 (function () {
 
 	'use strict';

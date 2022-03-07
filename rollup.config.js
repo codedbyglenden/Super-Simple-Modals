@@ -1,34 +1,54 @@
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import { babel } from '@rollup/plugin-babel';
 import pkg from "./package.json";
 
-export default [
-  {
-    input: "src/index.js", // your entry point
-    output: {
-        name: "super-simple-modals", // package name
-        file: pkg.browser,
-        format: "umd",
+import json from '@rollup/plugin-json';
+import { terser } from 'rollup-plugin-terser';
+
+const devMode = (process.env.NODE_ENV === 'development');
+
+export default {
+  input: './src/index.js',
+  output: [
+    {
+      file: pkg.main,
+      format: 'iife',
+      name: 'SuperSimpleModal',
+      sourcemap: devMode ? 'inline' : false,
+      plugins: [
+        babel({
+          exclude: ["node_modules/**"],
+        }),
+        terser({
+          ecma: 2020,
+          mangle: true,
+          compress: {
+            module: false,
+            drop_console: !devMode,
+            drop_debugger: !devMode
+          },
+          output: { quote_style: 1 }
+        })
+      ]
     },
-    plugins: [
-        nodeResolve(),
-        commonjs(),
+    {
+      file: pkg.module,
+      format: "es",
+      sourcemap: devMode ? 'inline' : false,
+      plugins: [
         babel({
-            exclude: ["node_modules/**"],
+          exclude: ["node_modules/**"],
         }),
-    ],
-  },
-  {
-    input: "src/index.js", // your entry point
-    output: [
-        { file: pkg.main, format: "cjs" },
-        { file: pkg.module, format: "es" },
-    ],
-    plugins: [
-        babel({
-            exclude: ["node_modules/**"],
-        }),
-    ],
-  },
-];
+        terser({
+          ecma: 2020,
+          mangle: { toplevel: true },
+          compress: {
+            module: true,
+            drop_console: !devMode,
+            drop_debugger: !devMode
+          },
+          output: { quote_style: 1 }
+        })
+      ]
+    }
+  ]
+}

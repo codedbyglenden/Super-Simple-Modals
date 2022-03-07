@@ -1,10 +1,8 @@
-## SSM Class & code example - [1.1.0] [Patch]
+## Rollup config improvements - [1.0.1] [Patch]
 
-* **Improvement** - *Switched from object to ssm class*
-* **Improvement** - *Added example code*
-* **Improvement** - *Added compilers*
+* **improvement** - *Rollup config has been improved*
 
-**Release Date:** 04/03/2022
+**Release Date:** 07/02/2022
 **Release Author:** TheOneAndOnlyZulu
 
 
