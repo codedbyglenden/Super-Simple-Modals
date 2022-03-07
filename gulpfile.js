@@ -15,7 +15,7 @@ sass.compiler = require('node-sass');
 */
 function watchScss() {
 	return gulp.src(
-		'../src/scss/**/*.scss'
+		'./src/scss/**/*.scss'
 	)
 		.pipe(sass.sync().on('error', sass.logError))
 		.pipe(rename({
@@ -53,7 +53,7 @@ function watchScss() {
 			'maxLineLen' : 80,
 			'uglyComments' : false
 		}))
-		.pipe(gulp.dest('../dist/css'));
+		.pipe(gulp.dest('./dist/css'));
 }
 
 /**
@@ -62,7 +62,7 @@ function watchScss() {
 */
 function defaultTask(cb) {
 
-	gulp.watch('../src/scss/**/*.scss', gulp.series( watchScss ) );
+	gulp.watch('./src/scss/**/*.scss', gulp.series( watchScss ) );
 	cb();
 }
 exports.default = defaultTask;
