@@ -8,8 +8,7 @@
     "build": "rollup -c --environment NODE_ENV:production && gulp scss",
     "dev": "rollup -c --environment NODE_ENV:development && gulp scss",
     "test": "npx eslint src/**/*.js",
-    "pretest": "npm run build",
-    "serve": "http-server"
+    "pretest": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -45,7 +44,6 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-uglifycss": "^1.1.0",
-    "http-server": "^14.1.0",
     "rollup": "^2.69.2",
     "sass": "^1.26.5",
     "stylelint": "^9.6.0",
