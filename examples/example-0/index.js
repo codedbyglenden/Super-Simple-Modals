@@ -1,4 +1,4 @@
-import SuperSimpleModal from 'super-simple-modals';
+import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-simple-modals.esm.js';
 
 (function () {
 
