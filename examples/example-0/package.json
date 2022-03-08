@@ -1,0 +1,8 @@
+{
+  "name": "super-simple-modals-example",
+  "version": "1.0.0",
+  "description": "An example of simple modal package created in vanilla JavaScript.",
+  "dependencies": {
+    "super-simple-modals": "^1.0.0"
+  }
+}
