@@ -9,7 +9,7 @@ class SuperSimpleModal {
 	*/
 	remove( initiatorButton = false ) {
 		
-		const modal = document.getElementById( 'preview-modal' );
+		const modal = document.getElementById( 'ssm-modal' );
 
 		if ( modal ) {
 			modal.remove();
@@ -36,20 +36,20 @@ class SuperSimpleModal {
 	} ) {
 		
 		// If the user submits main content then wrap it in a div.
-		const postContent = mainContent ? `<div id="content" class="modal__content">${mainContent}</div>` : '';
+		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${mainContent}</div>` : '';
 		
 		// Base modal markup.
 		const modal =  `
-		<div role="dialog" aria-modal="true" aria-labelledby="modal-title" id="preview-modal" class="modal">
-			<div class="modal__container">
-				<h3 id="modal-title">${title}</h3>
+		<div role="dialog" aria-modal="true" aria-labelledby="ssm-modal-title" id="ssm-modal" class="ssm-modal">
+			<div class="ssm-modal__container">
+				<h3 id="ssm-modal-title">${title}</h3>
 				${description ? `<p>${description}</p>`: ''}
 		
 				${postContent}
 		
-				<div class="modal-buttons is-flex">
-					<button id="preview-modal__close" aria-label="Close" class="btn btn--preview">${removeText}</button>
-					<button id="preview-modal__do_it" class="btn btn--fill">${addText}</button>
+				<div class="ssm-modal-buttons is-flex">
+					<button id="ssm-modal__close" aria-label="Close" class="btn btn--preview">${removeText}</button>
+					<button id="ssm-modal__do_it" class="btn btn--fill">${addText}</button>
 				</div>		
 			</div>
 		</div>`;
@@ -58,17 +58,17 @@ class SuperSimpleModal {
 		document.body.insertAdjacentHTML( 'beforeend', modal );
 		
 		// Initiate focus trap.
-		this.initiateFocusTrap( 'preview-modal' );
+		this.initiateFocusTrap( 'ssm-modal' );
 		
 		// Focus the close button on modal open.
-		document.getElementById( 'preview-modal__close' ).focus();
+		document.getElementById( 'ssm-modal__close' ).focus();
 		
 		// Add the cancel modal open action.
-		document.getElementById( 'preview-modal__close' ).addEventListener( 'click', () => this.remove( initiatorButton ) );
+		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove( initiatorButton ) );
 		
 		// Remove the modal if they click the grey area.
-		document.getElementById( 'preview-modal' ).addEventListener( 'click', (e) => {
-			if ( 'preview-modal' === e.target.getAttribute('id') ) {
+		document.getElementById( 'ssm-modal' ).addEventListener( 'click', (e) => {
+			if ( 'ssm-modal' === e.target.getAttribute('id') ) {
 				this.remove( initiatorButton );
 			}
 		});
@@ -85,7 +85,7 @@ class SuperSimpleModal {
 		});
 		
 		// Add the continue with this action callback.
-		document.getElementById( 'preview-modal__do_it' ).addEventListener( 'click', () => {
+		document.getElementById( 'ssm-modal__do_it' ).addEventListener( 'click', () => {
 			callback( params );
 		});
 	}
@@ -100,7 +100,15 @@ class SuperSimpleModal {
 		const parentContainer = document.querySelector( '#' + parentId );
 		
 		// Get all of the child items that can be tabbed to.
-		const selectableItems = parentContainer.querySelectorAll( 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])' );
+		const selectableItems = parentContainer.querySelectorAll( 
+			`a[href]:not([disabled]),
+			button:not([disabled]),
+			textarea:not([disabled]),
+			input[type="text"]:not([disabled]),
+			input[type="radio"]:not([disabled]),
+			input[type="checkbox"]:not([disabled]),
+			select:not([disabled])`
+		);
 		
 		// The first & last item in the list so we can skip to them at the start/end of the trap.
 		const firstFocusableEl = selectableItems[0];
