@@ -1,3 +1,13 @@
+## House keeping - [1.0.3] [Patch]
+
+* **Improvement** - *Updated css class / id naming convention*
+* **Improvement** - *Renamed the compiled css file*
+* **Improvement** - *Now only shipping dist code to npm*
+
+**Release Date:** 09/02/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## Example code update - [1.0.2] [Patch]
 
 * **Improvement** - *Examples now deploying correctly to vercel*
