@@ -21,7 +21,9 @@ class SuperSimpleModal {
 			'input',
 			'button',
 			'textarea',
-			'select'
+			'select',
+			'img',
+			'video'
 		];
 	}
 
