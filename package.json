@@ -7,7 +7,6 @@
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production && gulp scss",
     "dev": "rollup -c --environment NODE_ENV:development && gulp scss",
-    "pretest": "npm run build",
     "test": "eslint src/**/*.js && stylelint 'src/scss/**/*.scss' --config",
     "test-js": "eslint src/**/*.js",
     "test-styles": "stylelint 'src/scss/**/*.scss' --config"
