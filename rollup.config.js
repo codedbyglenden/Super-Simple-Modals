@@ -1,7 +1,5 @@
 import { babel } from '@rollup/plugin-babel';
 import pkg from "./package.json";
-
-import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
 
 const devMode = (process.env.NODE_ENV === 'development');

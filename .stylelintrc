@@ -1,0 +1,39 @@
+{
+	"extends": [
+		"stylelint-config-standard-scss",
+		"stylelint-config-prettier-scss"
+	],
+	"rules": {
+		"scss/at-rule-conditional-no-parentheses": null,
+		"scss/at-mixin-pattern": null,
+		"alpha-value-notation": "number",
+		"value-no-vendor-prefix": null,
+		"color-function-notation": "legacy",
+		"selector-id-pattern": null,
+		"scss/double-slash-comment-empty-line-before": null,
+		"custom-property-empty-line-before": null,
+		"no-invalid-double-slash-comments": null,
+		"rule-empty-line-before": null,
+		"declaration-empty-line-before": null,
+		"custom-property-pattern": null,
+		"selector-class-pattern": null,
+		"at-rule-no-unknown": null,
+		"max-line-length":
+		[
+			800,
+			{
+				"ignore": ["comments"]
+			}
+		],
+		"color-named":
+		[
+			"never",
+			{
+				"ignore": ["inside-function"]
+			}
+		]
+	},
+    "selector-pseudo-element-colon-notation": "single",
+    "number-leading-zero": null,
+    "no-duplicate-selectors" : null
+}
