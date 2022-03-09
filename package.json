@@ -1,6 +1,6 @@
 {
   "name": "super-simple-modals",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple modal package created in vanilla JavaScript.",
   "main": "dist/super-simple-modals.min.js",
   "module": "dist/super-simple-modals.esm.js",
@@ -55,8 +55,7 @@
     "stylelint-scss": "^4.1.0"
   },
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "dependencies": {
     "striptags": "^3.2.0"
