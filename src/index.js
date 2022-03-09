@@ -1,8 +1,30 @@
+import striptags from "striptags";
+
 /**
 * Super Simple Modal Class.
 */
 class SuperSimpleModal {
 	
+	constructor() {
+		this.allowedTags = [
+			'a',
+			'h1',
+			'h2',
+			'h3',
+			'h4',
+			'strong',
+			'em',
+			'span',
+			'ul',
+			'li',
+			'ol',
+			'input',
+			'button',
+			'textarea',
+			'select'
+		];
+	}
+
 	/**
 	* Remove the modal & apply focus to the original button.
 	* @param {*} initiatorButton The div clicked to open the modal.
@@ -36,20 +58,22 @@ class SuperSimpleModal {
 	} ) {
 		
 		// If the user submits main content then wrap it in a div.
-		const postContent = mainContent ? `<div id="content" class="modal__content">${mainContent}</div>` : '';
+		const postContent = mainContent ? `<div id="content" class="modal__content">${striptags(mainContent, this.allowedTags)}</div>` : '';
 		
+		const outputDescription = description ? `<p>${striptags(description)}</p>` : '';
+
 		// Base modal markup.
 		const modal =  `
 		<div role="dialog" aria-modal="true" aria-labelledby="modal-title" id="preview-modal" class="modal">
 			<div class="modal__container">
 				<h3 id="modal-title">${title}</h3>
-				${description ? `<p>${description}</p>`: ''}
+				${outputDescription}
 		
 				${postContent}
 		
 				<div class="modal-buttons is-flex">
-					<button id="preview-modal__close" aria-label="Close" class="btn btn--preview">${removeText}</button>
-					<button id="preview-modal__do_it" class="btn btn--fill">${addText}</button>
+					<button id="preview-modal__close" aria-label="Close" class="btn btn--preview">${striptags(removeText)}</button>
+					<button id="preview-modal__do_it" class="btn btn--fill">${striptags(addText)}</button>
 				</div>		
 			</div>
 		</div>`;

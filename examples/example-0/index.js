@@ -20,9 +20,10 @@ import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-sim
 
 				// Generates a modal.
 				modal.generate({
-					title: 'My modal title',
-					description: 'My modal description...',
-					addText: 'Accept & Submit',
+					title: '<script>alert("world");</script>My modal title',
+					description: '<script>console.log( "here" )</script>My modal description...',
+					mainContent: '<script>alert("world");</script>',
+					addText: '<script>alert();</script>Accept & Submit',
 					initiatorButton: e.target,
 					callback: possitiveAction,
 					params: {
