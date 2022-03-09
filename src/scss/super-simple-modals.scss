@@ -1,9 +1,9 @@
-.modal {
+.ssm-modal {
 	position: fixed;
 	top: 0; 
-    left: 0;
-    right: 0;
-    bottom: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	display: grid;
 	place-items: center;
 	z-index: 10000000;
@@ -11,37 +11,33 @@
 	width: 100vw;
 	padding: 24px;
 	background-color: rgba(0, 0, 0, 0.6);
-
-	&-buttons {
-		display: flex;
-	}
-
-	button {
-		cursor: pointer;
-	}
-
+	
 	&__container {
 		width: 100%;
 		max-width: 500px;
 		background-color: #FFF;
 		padding: 40px;
 		border-radius: 8px;
-
-		.btn {
-			margin: 8px 0;
-			width: calc(50% - 8px);
-
-			&:first-child {
-				margin-right: 16px;
-			}
-		}
 	}
-
+	
 	&__content {
 		margin-top: 24px;
+	}
 
-		.title {
-			margin-bottom: 8px;
+	.title {
+		margin-bottom: 8px;
+	}
+
+	&-buttons {
+		display: flex;
+	}
+	
+	.btn {
+		margin: 8px 0;
+		width: calc(50% - 8px);
+		
+		&:first-child {
+			margin-right: 16px;
 		}
 	}
 }
