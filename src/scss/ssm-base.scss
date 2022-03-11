@@ -11,10 +11,15 @@
 	width: 100vw;
 	padding: 24px;
 	background-color: rgba(0, 0, 0, 0.6);
+
+	* {
+		box-sizing: border-box;
+	}
 	
 	&__container {
 		width: 100%;
-		max-width: 500px;
+		/* stylelint-disable-next-line function-name-case */
+		max-width: Min(calc(100vw - 32px), 500px);
 		background-color: #FFF;
 		padding: 40px;
 		border-radius: 8px;
@@ -22,6 +27,9 @@
 	
 	&__content {
 		margin-top: 24px;
+		padding-right: 16px;
+		overflow: auto;
+		max-height: 400px;
 	}
 
 	.title {

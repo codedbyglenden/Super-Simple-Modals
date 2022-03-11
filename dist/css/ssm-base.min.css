@@ -1,0 +1,5 @@
+.ssm-modal{position:fixed;top:0;left:0;right:0;bottom:0;display:grid;place-items:center;z-index:10000000;height:100vh;width:100vw;padding:24px;background-color:rgba(0,0,0,.6)}
+.ssm-modal *{box-sizing:border-box}.ssm-modal__container{width:100%;max-width:min(calc(100vw - 32px),500px);background-color:#fff;padding:40px;border-radius:8px}
+.ssm-modal__content{margin-top:24px;padding-right:16px;overflow:auto;max-height:400px}
+.ssm-modal .title{margin-bottom:8px}.ssm-modal-buttons{display:flex}.ssm-modal .btn{margin:8px 0;width:calc(50% - 8px)}
+.ssm-modal .btn:first-child{margin-right:16px}

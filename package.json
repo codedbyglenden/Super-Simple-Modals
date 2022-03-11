@@ -47,7 +47,7 @@
     "postcss": "8.4.8",
     "rollup": "^2.69.2",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.26.5",
+    "sass": "^1.49.9",
     "stylelint": "^14.5.3",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-recommended-scss": "^5.0.2",
@@ -58,6 +58,5 @@
     "dist"
   ],
   "dependencies": {
-    "striptags": "^3.2.0"
   }
 }

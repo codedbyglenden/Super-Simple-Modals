@@ -18,14 +18,21 @@ import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-sim
 			openModal.addEventListener( 'click', (e) => {
 				e.preventDefault();
 
+				// const mainContent = '\<a onmouseover="alert(document.cookie)"\>xxs link\</a\>';
+				// <a onmouseover="alert(document.cookie)"\>xxs link\</a\>
+
+				const mainContent = 'Hello world.';
+
 				// Generates a modal.
 				modal.generate({
 					title: '<script>alert("world");</script>My modal title',
 					description: '<script>console.log( "here" )</script>My modal description...',
-					mainContent: '<script>alert("world");</script>',
+					mainContent: mainContent,
 					addText: '<script>alert();</script>Accept & Submit',
 					initiatorButton: e.target,
 					callback: possitiveAction,
+					willAnimate: true,
+					animationTimeout: 1000,
 					params: {
 						originalButton: e.target,
 					}

@@ -1,41 +1,55 @@
-import striptags from "striptags";
-
 /**
 * Super Simple Modal Class.
 */
 class SuperSimpleModal {
 
 	constructor() {
-		this.allowedTags = [
-			'a',
-			'h1',
-			'h2',
-			'h3',
-			'h4',
-			'strong',
-			'em',
-			'span',
-			'ul',
-			'li',
-			'ol',
-			'input',
-			'button',
-			'textarea',
-			'select',
-			'img',
-			'video'
-		];
+		this.focusableElements = `
+			a[href]:not([disabled]),
+			button:not([disabled]),
+			textarea:not([disabled]),
+			input[type="text"]:not([disabled]),
+			input[type="radio"]:not([disabled]),
+			input[type="checkbox"]:not([disabled]),
+			select:not([disabled])
+		`;
+
+		this.willAnimate = false;
+		this.animationTimeout = 1;
+	}
+
+	/**
+	 * Strip html from string.
+	 * @param {string} html String of html to check.
+	 * @returns 
+	 */
+	strip(html) {
+		try {
+			var doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
+			doc.documentElement.innerHTML = html;
+			return doc.documentElement.textContent||doc.documentElement.innerText;
+		} catch(e) {
+			return '';
+		}		
 	}
 
 	/**
 	* Remove the modal & apply focus to the original button.
 	* @param {*} initiatorButton The div clicked to open the modal.
 	*/
-	remove( initiatorButton = false ) {
+	async remove( initiatorButton = false ) {
 
 		const modal = document.getElementById( 'ssm-modal' );
 
 		if ( modal ) {
+
+			if ( this.willAnimate ) {
+
+				modal.setAttribute( 'aria-hidden', true );
+
+				await new Promise(resolve => setTimeout(resolve, this.animationTimeout));
+			}
+			
 			modal.remove();
 		}
 
@@ -56,27 +70,53 @@ class SuperSimpleModal {
 		mainContent = '',
 		callback,
 		params = {},
-		initiatorButton
+		initiatorButton,
+		willAnimate = false,
+		animationTimeout = 1000,
 	} ) {
 
-		// If the user submits main content then wrap it in a div.
-		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${striptags(mainContent, this.allowedTags)}</div>` : '';
+		if ( animationTimeout ) {
+			this.animationTimeout = animationTimeout;
+		}
 
-		const outputDescription = description ? `<p>${striptags(description)}</p>` : '';
+		if ( willAnimate ) {
+			this.willAnimate = willAnimate;
+		}
+
+		// If the user submits main content then wrap it in a div.
+		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${mainContent}</div>` : '';
+
+		const outputDescription = description ? `<div id="ssm-modal__description"><p>${this.strip(description)}</p></div>` : '';
 
 		// Base modal markup.
 		const modal =  `
-		<div role="dialog" aria-modal="true" aria-labelledby="ssm-modal-title" id="ssm-modal" class="ssm-modal">
+		<div
+			id="ssm-modal"
+			class="ssm-modal"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="ssm-modal__title"
+    		aria-describedby="ssm-modal__description"
+			aria-hidden="false"
+		>
 			<div class="ssm-modal__container">
-				<h3 id="ssm-modal-title">${title}</h3>
+				<h3 id="ssm-modal__title">${this.strip(title)}</h3>
 
 				${outputDescription}
 
 				${postContent}
 
 				<div class="ssm-modal-buttons is-flex">
-					<button id="ssm-modal__close" aria-label="Close" class="btn btn--preview">${striptags(removeText)}</button>
-					<button id="ssm-modal__do_it" class="btn btn--fill">${striptags(addText)}</button>
+					<button
+						id="ssm-modal__close"
+						aria-label="Close"
+						class="btn btn--preview"
+						title="Close modal"
+					>${this.strip(removeText)}</button>
+					<button
+						id="ssm-modal__do_it"
+						class="btn btn--fill"
+					>${this.strip(addText)}</button>
 				</div>
 			</div>
 		</div>`;
@@ -128,13 +168,7 @@ class SuperSimpleModal {
 
 		// Get all of the child items that can be tabbed to.
 		const selectableItems = parentContainer.querySelectorAll(
-			`a[href]:not([disabled]),
-			button:not([disabled]),
-			textarea:not([disabled]),
-			input[type="text"]:not([disabled]),
-			input[type="radio"]:not([disabled]),
-			input[type="checkbox"]:not([disabled]),
-			select:not([disabled])`
+			this.focusableElements
 		);
 
 		// The first & last item in the list so we can skip to them at the start/end of the trap.
