@@ -128,7 +128,8 @@ class SuperSimpleModal {
 		this.initiateFocusTrap( 'ssm-modal' );
 
 		// Focus the close button on modal open.
-		document.getElementById( 'ssm-modal__close' ).focus();
+		document.querySelector( this.focusableElements ).focus();
+		// Maybe add a focus element near the top of the modal for long content?
 
 		// Add the cancel modal open action.
 		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove( initiatorButton ) );

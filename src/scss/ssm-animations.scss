@@ -23,7 +23,7 @@
     will-change: transform;
 }
 
-.ssm-modal[aria-hidden="false"] {
+.ssm-modal {
     animation: ssm-fadein .3s cubic-bezier(0.0, 0.0, 0.2, 1);
 
     .ssm-modal__container {

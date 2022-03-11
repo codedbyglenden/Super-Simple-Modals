@@ -4,7 +4,7 @@ to{opacity:0}}@-webkit-keyframes ssm-slidein{from{transform:translateY(15%)}to{t
 }@keyframes ssm-slidein{from{transform:translateY(15%)}to{transform:translateY(0)}
 }@-webkit-keyframes ssm-slideout{from{transform:translateY(0)}to{transform:translateY(-10%)}
 }@keyframes ssm-slideout{from{transform:translateY(0)}to{transform:translateY(-10%)}
-}.ssm-modal,.ssm-modal__container{will-change:transform}.ssm-modal[aria-hidden=false]{-webkit-animation:.3s cubic-bezier(0,0,.2,1) ssm-fadein;animation:.3s cubic-bezier(0,0,.2,1) ssm-fadein}
-.ssm-modal[aria-hidden=false] .ssm-modal__container{-webkit-animation:.3s cubic-bezier(0,0,.2,1) ssm-slidein;animation:.3s cubic-bezier(0,0,.2,1) ssm-slidein}
+}.ssm-modal,.ssm-modal__container{will-change:transform}.ssm-modal{-webkit-animation:.3s cubic-bezier(0,0,.2,1) ssm-fadein;animation:.3s cubic-bezier(0,0,.2,1) ssm-fadein}
+.ssm-modal .ssm-modal__container{-webkit-animation:.3s cubic-bezier(0,0,.2,1) ssm-slidein;animation:.3s cubic-bezier(0,0,.2,1) ssm-slidein}
 .ssm-modal[aria-hidden=true]{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadeout;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadeout}
 .ssm-modal[aria-hidden=true] .ssm-modal__container{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slideout;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slideout}
