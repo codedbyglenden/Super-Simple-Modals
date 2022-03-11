@@ -1,3 +1,16 @@
+## Animations - [1.1.0] [Minor]
+
+* **Feature** - *Added basic open close animations as optional css file*
+* **Feature** - *Added a html strip function for title, description & button text*
+* **Improvement** - *File names shortened*
+* **Improvement** - *Removed babel warnings from rollup config*
+* **Improvement** - *Generator method has less manual input*
+* **Improvement** - *Added global variables for items that are re-used*
+
+**Release Date:** 11/02/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## House keeping - [1.0.3] [Patch]
 
 * **Improvement** - *Updated css class / id naming convention*
