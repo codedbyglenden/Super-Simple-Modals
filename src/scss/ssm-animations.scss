@@ -20,21 +20,22 @@
 
 .ssm-modal,
 .ssm-modal__container {
-    will-change: transform;
+    will-change: transform opacity;
+    backface-visibility: hidden;
 }
 
-.ssm-modal {
-    animation: ssm-fadein .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+.ssm-modal.will-animate {
+    animation: ssm-fadein .3s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
 
     .ssm-modal__container {
-        animation: ssm-slidein .3s cubic-bezier(0, 0, .2, 1);
+        animation: ssm-slidein .3s cubic-bezier(0, 0, .2, 1) forwards;
     }
-}
 
-.ssm-modal[aria-hidden="true"] {
-    animation: ssm-fadeout .3s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
-
-    .ssm-modal__container {
-        animation: ssm-slideout .3s cubic-bezier(0, 0, .2, 1) forwards;
+    &[aria-hidden="true"] {
+        animation: ssm-fadeout .3s cubic-bezier(0.0, 0.0, 0.2, 1) forwards;
+    
+        .ssm-modal__container {
+            animation: ssm-slideout .3s cubic-bezier(0, 0, .2, 1) forwards;
+        }
     }
 }

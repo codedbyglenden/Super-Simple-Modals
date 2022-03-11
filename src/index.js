@@ -4,16 +4,7 @@
 class SuperSimpleModal {
 
 	constructor() {
-		this.focusableElements = `
-			a[href]:not([disabled]),
-			button:not([disabled]),
-			textarea:not([disabled]),
-			input[type="text"]:not([disabled]),
-			input[type="radio"]:not([disabled]),
-			input[type="checkbox"]:not([disabled]),
-			select:not([disabled])
-		`;
-
+		this.focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
 		this.willAnimate = false;
 		this.animationTimeout = 1;
 	}
@@ -72,7 +63,7 @@ class SuperSimpleModal {
 		params = {},
 		initiatorButton,
 		willAnimate = false,
-		animationTimeout = 1000,
+		animationTimeout = 300,
 	} ) {
 
 		if ( animationTimeout ) {
@@ -92,7 +83,7 @@ class SuperSimpleModal {
 		const modal =  `
 		<div
 			id="ssm-modal"
-			class="ssm-modal"
+			class="ssm-modal${willAnimate ? ' will-animate':''}"
 			role="dialog"
 			aria-modal="true"
 			aria-labelledby="ssm-modal__title"
@@ -126,10 +117,6 @@ class SuperSimpleModal {
 
 		// Initiate focus trap.
 		this.initiateFocusTrap( 'ssm-modal' );
-
-		// Focus the close button on modal open.
-		document.querySelector( this.focusableElements ).focus();
-		// Maybe add a focus element near the top of the modal for long content?
 
 		// Add the cancel modal open action.
 		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove( initiatorButton ) );
@@ -175,6 +162,9 @@ class SuperSimpleModal {
 		// The first & last item in the list so we can skip to them at the start/end of the trap.
 		const firstFocusableEl = selectableItems[0];
 		const lastFocusableEl = selectableItems[ selectableItems.length - 1 ];
+
+		// Focus the first focusable item.
+		firstFocusableEl.focus();
 
 		// Add a keydown event listener to the modal.
 		parentContainer.addEventListener('keydown', function(e) {

@@ -1,4 +1,4 @@
-import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-simple-modals.esm.js';
+import SuperSimpleModal from '../node_modules/super-simple-modals/dist/index.js';
 
 (function () {
 
@@ -18,21 +18,14 @@ import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-sim
 			openModal.addEventListener( 'click', (e) => {
 				e.preventDefault();
 
-				// const mainContent = '\<a onmouseover="alert(document.cookie)"\>xxs link\</a\>';
-				// <a onmouseover="alert(document.cookie)"\>xxs link\</a\>
-
-				const mainContent = 'Hello world.';
-
 				// Generates a modal.
 				modal.generate({
 					title: '<script>alert("world");</script>My modal title',
 					description: '<script>console.log( "here" )</script>My modal description...',
-					mainContent: mainContent,
-					addText: '<script>alert();</script>Accept & Submit',
+					addText: 'Accept & Submit',
 					initiatorButton: e.target,
 					callback: possitiveAction,
 					willAnimate: true,
-					animationTimeout: 1000,
 					params: {
 						originalButton: e.target,
 					}
