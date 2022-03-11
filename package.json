@@ -1,9 +1,9 @@
 {
   "name": "super-simple-modals",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A simple modal package created in vanilla JavaScript.",
-  "main": "dist/super-simple-modals.min.js",
-  "module": "dist/super-simple-modals.esm.js",
+  "main": "dist/ssm.min.js",
+  "module": "dist/ssm.esm.js",
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production && gulp scss",
     "dev": "rollup -c --environment NODE_ENV:development && gulp scss",
@@ -47,7 +47,7 @@
     "postcss": "8.4.8",
     "rollup": "^2.69.2",
     "rollup-plugin-terser": "^7.0.2",
-    "sass": "^1.26.5",
+    "sass": "^1.49.9",
     "stylelint": "^14.5.3",
     "stylelint-config-prettier-scss": "^0.0.1",
     "stylelint-config-recommended-scss": "^5.0.2",
@@ -57,5 +57,6 @@
   "files": [
     "dist"
   ],
-  "dependencies": {}
+  "dependencies": {
+  }
 }

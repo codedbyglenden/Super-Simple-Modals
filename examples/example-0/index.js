@@ -1,4 +1,4 @@
-import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-simple-modals.esm.js';
+import SuperSimpleModal from '../node_modules/super-simple-modals/dist/ssm.esm.js';
 
 (function () {
 
@@ -22,23 +22,21 @@ import SuperSimpleModal from '../node_modules/super-simple-modals/dist/super-sim
 				modal.generate({
 					title: 'My modal title',
 					description: 'My modal description...',
-					addText: 'Accept & Submit',
+					addText: 'Submit',
 					initiatorButton: e.target,
 					callback: possitiveAction,
-					params: {
-						originalButton: e.target,
-					}
+					willAnimate: true,
 				});
 			});
 
 			// The action taken when you click the positive action button.
-			const possitiveAction = ({originalButton}) => {
+			const possitiveAction = ({initiatorButton}) => {
 				
 				// Callback is hit when the user selects the right hand button.
 				console.log( 'Possitive action taken.' );
 
 				// Remove the modal & return the focus to the original button.
-				modal.remove( originalButton );
+				modal.remove( initiatorButton );
 			};
 		}
 	}

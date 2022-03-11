@@ -1,11 +1,17 @@
-import { babel } from '@rollup/plugin-babel';
-import pkg from "./package.json";
+// import { babel } from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
+import {pkg} from './package.json';
 
 const devMode = (process.env.NODE_ENV === 'development');
 
 export default {
   input: './src/index.js',
+  // plugins: [
+  //   babel({
+  //     exclude: ["node_modules/**"],
+  //     babelHelpers: 'bundled'
+  //   }),
+  // ],
   output: [
     {
       file: pkg.main,
@@ -13,9 +19,6 @@ export default {
       name: 'SuperSimpleModal',
       sourcemap: devMode ? 'inline' : false,
       plugins: [
-        babel({
-          exclude: ["node_modules/**"],
-        }),
         terser({
           ecma: 2020,
           mangle: true,
@@ -33,9 +36,6 @@ export default {
       format: "es",
       sourcemap: devMode ? 'inline' : false,
       plugins: [
-        babel({
-          exclude: ["node_modules/**"],
-        }),
         terser({
           ecma: 2020,
           mangle: { toplevel: true },

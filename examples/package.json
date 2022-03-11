@@ -1,6 +1,6 @@
 {
   "name": "super-simple-modals-example",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "An example of simple modal package created in vanilla JavaScript.",
   "scripts": {
     "serve": "browser-sync start --server --files"
@@ -9,6 +9,6 @@
     "browser-sync": "^2.27.7"
   },
   "dependencies": {
-    "super-simple-modals": "^1.0.3"
+    "super-simple-modals": "^1.1.0"
   }
 }

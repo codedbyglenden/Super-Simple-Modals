@@ -1,0 +1,11 @@
+@-webkit-keyframes ssm-fadein{from{opacity:0}to{opacity:1}}@keyframes ssm-fadein{from{opacity:0}
+to{opacity:1}}@-webkit-keyframes ssm-fadeout{from{opacity:1}to{opacity:0}}@keyframes ssm-fadeout{from{opacity:1}
+to{opacity:0}}@-webkit-keyframes ssm-slidein{from{transform:translateY(15%)}to{transform:translateY(0)}
+}@keyframes ssm-slidein{from{transform:translateY(15%)}to{transform:translateY(0)}
+}@-webkit-keyframes ssm-slideout{from{transform:translateY(0)}to{transform:translateY(-10%)}
+}@keyframes ssm-slideout{from{transform:translateY(0)}to{transform:translateY(-10%)}
+}.ssm-modal,.ssm-modal__container{will-change:transform opacity;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ssm-modal.will-animate{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadein;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadein}
+.ssm-modal.will-animate .ssm-modal__container{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slidein;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slidein}
+.ssm-modal.will-animate[aria-hidden=true]{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadeout;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadeout}
+.ssm-modal.will-animate[aria-hidden=true] .ssm-modal__container{-webkit-animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slideout;animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slideout}
