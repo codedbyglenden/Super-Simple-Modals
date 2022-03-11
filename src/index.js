@@ -3,10 +3,14 @@
 */
 class SuperSimpleModal {
 
+	/**
+	 * Set-up initial global vars.
+	 */
 	constructor() {
 		this.focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
 		this.willAnimate = false;
 		this.animationTimeout = 1;
+		this.initiatorButton = false;
 	}
 
 	/**
@@ -26,9 +30,8 @@ class SuperSimpleModal {
 
 	/**
 	* Remove the modal & apply focus to the original button.
-	* @param {*} initiatorButton The div clicked to open the modal.
 	*/
-	async remove( initiatorButton = false ) {
+	async remove() {
 
 		const modal = document.getElementById( 'ssm-modal' );
 
@@ -44,8 +47,8 @@ class SuperSimpleModal {
 			modal.remove();
 		}
 
-		if ( initiatorButton ) {
-			initiatorButton.focus();
+		if ( this.initiatorButton ) {
+			this.initiatorButton.focus();
 		}
 	}
 
@@ -59,12 +62,17 @@ class SuperSimpleModal {
 		removeText = 'Cancel',
 		addText = '',
 		mainContent = '',
-		callback,
+		callback = null,
 		params = {},
-		initiatorButton,
+		initiatorButton = null,
 		willAnimate = false,
 		animationTimeout = 300,
 	} ) {
+
+		if ( initiatorButton ) {
+			this.initiatorButton = initiatorButton;
+			params.initiatorButton = initiatorButton;
+		}
 
 		if ( animationTimeout ) {
 			this.animationTimeout = animationTimeout;
@@ -119,12 +127,12 @@ class SuperSimpleModal {
 		this.initiateFocusTrap( 'ssm-modal' );
 
 		// Add the cancel modal open action.
-		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove( initiatorButton ) );
+		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove() );
 
 		// Remove the modal if they click the grey area.
 		document.getElementById( 'ssm-modal' ).addEventListener( 'click', (e) => {
 			if ( 'ssm-modal' === e.target.getAttribute('id') ) {
-				this.remove( initiatorButton );
+				this.remove();
 			}
 		});
 
@@ -135,14 +143,16 @@ class SuperSimpleModal {
 			const event = e || window.event;
 
 			if ( 'key' in event ? ( event.key === 'Escape' || event.key === 'Esc') : ( event.keyCode === 27 ) ) {
-				this.remove( initiatorButton );
+				this.remove();
 			}
 		});
 
 		// Add the continue with this action callback.
-		document.getElementById( 'ssm-modal__do_it' ).addEventListener( 'click', () => {
-			callback( params );
-		});
+		if ( callback ) {
+			document.getElementById( 'ssm-modal__do_it' ).addEventListener( 'click', () => {
+				callback( params );
+			});
+		}
 	}
 
 	/**

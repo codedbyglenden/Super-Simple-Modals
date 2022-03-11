@@ -1,4 +1,4 @@
-import SuperSimpleModal from '../node_modules/super-simple-modals/dist/index.js';
+import SuperSimpleModal from '../node_modules/super-simple-modals/dist/ssm.esm.js';
 
 (function () {
 
@@ -26,9 +26,6 @@ import SuperSimpleModal from '../node_modules/super-simple-modals/dist/index.js'
 					initiatorButton: e.target,
 					callback: possitiveAction,
 					willAnimate: true,
-					params: {
-						originalButton: e.target,
-					}
 				});
 			});
 
