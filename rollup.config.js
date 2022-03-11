@@ -1,5 +1,4 @@
 import { babel } from '@rollup/plugin-babel';
-import pkg from "./package.json";
 import { terser } from 'rollup-plugin-terser';
 
 const devMode = (process.env.NODE_ENV === 'development');
@@ -8,7 +7,7 @@ export default {
   input: './src/index.js',
   output: [
     {
-      file: pkg.main,
+      file: './dist/ssm.min.js',
       format: 'iife',
       name: 'SuperSimpleModal',
       sourcemap: devMode ? 'inline' : false,
@@ -29,7 +28,7 @@ export default {
       ]
     },
     {
-      file: pkg.module,
+      file: './dist/ssm.esm.js',
       format: "es",
       sourcemap: devMode ? 'inline' : false,
       plugins: [
