@@ -9,6 +9,6 @@
     "browser-sync": "^2.27.7"
   },
   "dependencies": {
-    "super-simple-modals": "^1.0.3"
+    "super-simple-modals": "^1.1.0"
   }
 }
