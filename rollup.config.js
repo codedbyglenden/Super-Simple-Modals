@@ -1,6 +1,6 @@
 // import { babel } from '@rollup/plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import {pkg} from './package.json';
+import pkg from "./package.json";
 
 const devMode = (process.env.NODE_ENV === 'development');
 
@@ -38,9 +38,25 @@ export default {
       plugins: [
         terser({
           ecma: 2020,
-          mangle: { toplevel: true },
+          keep_fnames: false,
+          mangle: {
+            toplevel: true,
+          },
+          output: { quote_style: 1 }
+        })
+      ]
+    },
+    {
+      file: pkg.bundle,
+      format: "umd",
+      name: 'SuperSimpleModal',
+      sourcemap: devMode ? 'inline' : false,
+      plugins: [
+        terser({
+          ecma: 2020,
+          mangle: true,
           compress: {
-            module: true,
+            module: false,
             drop_console: !devMode,
             drop_debugger: !devMode
           },
