@@ -26,14 +26,9 @@ $ yarn add super-simple-modals
 
 ## Example
 
-### note: CommonJS usage
-In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+More code examples are available in the <a target="_blank" href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/tree/main/examples">examples directory</a> of the Github repo.
 
-```js
-import SuperSimpleModal from 'super-simple-modals';
-```
-
-Initialise a modal 
+Initialise a basic modal 
 
 ```js
 const modal = new SuperSimpleModal();
