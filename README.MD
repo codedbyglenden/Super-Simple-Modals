@@ -1,3 +1,5 @@
+<img alt="GitHub package.json version (subfolder of monorepo)" src="https://img.shields.io/github/package-json/v/TheOneAndOnlyZulu/Super-Simple-Modals"> <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/super-simple-modals" /> <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/super-simple-modals" />
+
 # About Super Simple Modals
 
 Super Simple Modals is a small Vanilla JavaScript library that does what it says on the tin. Allow you to create pop-up modals on your website in no time, with a tiny amount of code.
