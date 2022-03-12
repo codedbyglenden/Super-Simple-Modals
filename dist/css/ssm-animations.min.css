@@ -1,0 +1,8 @@
+@keyframes ssm-fadein{from{opacity:0}to{opacity:1}}@keyframes ssm-fadeout{from{opacity:1}
+to{opacity:0}}@keyframes ssm-slidein{from{transform:translateY(15%)}to{transform:translateY(0)}
+}@keyframes ssm-slideout{from{transform:translateY(0)}to{transform:translateY(-10%)}
+}.ssm-modal,.ssm-modal__container{will-change:transform opacity;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.ssm-modal.will-animate{animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadein}
+.ssm-modal.will-animate .ssm-modal__container{animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slidein}
+.ssm-modal.will-animate[aria-hidden=true]{animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-fadeout}
+.ssm-modal.will-animate[aria-hidden=true] .ssm-modal__container{animation:.3s cubic-bezier(0,0,.2,1) forwards ssm-slideout}
