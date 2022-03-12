@@ -10,7 +10,7 @@ class SuperSimpleModal {
 		this.focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
 		this.willAnimate = false;
 		this.animationTimeout = 1;
-		this.initiatorButton = false;
+		this.initiatorButton = null;
 	}
 
 	/**
@@ -37,7 +37,7 @@ class SuperSimpleModal {
 
 		if ( modal ) {
 
-			if ( this.willAnimate ) {
+			if ( true === this.willAnimate ) {
 
 				modal.setAttribute( 'aria-hidden', true );
 
@@ -47,7 +47,7 @@ class SuperSimpleModal {
 			modal.remove();
 		}
 
-		if ( this.initiatorButton ) {
+		if ( null !== this.initiatorButton ) {
 			this.initiatorButton.focus();
 		}
 	}
