@@ -24,6 +24,37 @@ Using yarn:
 $ yarn add super-simple-modals
 ```
 
+## Example
+
+### note: CommonJS usage
+In order to gain the TypeScript typings (for intellisense / autocomplete) while using CommonJS imports with `require()` use the following approach:
+
+```js
+import SuperSimpleModal from 'super-simple-modals';
+```
+
+Initialise a modal 
+
+```js
+const modal = new SuperSimpleModal();
+
+// Check if the open modal button exists.
+const openModal = document.getElementById( 'open-modal' );
+if ( openModal ) {
+  openModal.addEventListener( 'click', (e) => {
+    e.preventDefault();
+
+    modal.generate({
+      title: 'My modal title',
+      description: 'My modal description...',
+      initiatorButton: e.target,
+      callback: possitiveAction,
+      willAnimate: true,
+    });
+  });
+}
+```
+
 ## Objectives
 
 This package aims to be:
