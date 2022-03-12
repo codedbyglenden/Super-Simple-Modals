@@ -38,11 +38,10 @@ export default {
       plugins: [
         terser({
           ecma: 2020,
-          mangle: { toplevel: true },
-          compress: {
-            module: true,
-            drop_console: !devMode,
-            drop_debugger: !devMode
+          keep_fnames: false,
+          mangle_props: true,
+          mangle: {
+            toplevel: true,
           },
           output: { quote_style: 1 }
         })
