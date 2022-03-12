@@ -1,6 +1,7 @@
 ## Animations - [1.1.1] [Patch]
 
 * **Improvement** - *Improved Readme*
+* **Improvement** - *Updated css browser support*
 * **Feature** - *Added UMD*
 
 **Release Date:** 12/02/2022
