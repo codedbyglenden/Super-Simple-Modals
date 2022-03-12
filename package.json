@@ -4,6 +4,7 @@
   "description": "A simple modal package created in vanilla JavaScript.",
   "main": "dist/ssm.min.js",
   "module": "dist/ssm.esm.js",
+  "bundle": "dist/ssm.umd.js",
   "scripts": {
     "build": "rollup -c --environment NODE_ENV:production && gulp scss",
     "dev": "rollup -c --environment NODE_ENV:development && gulp scss",
@@ -12,12 +13,12 @@
     "test-styles": "stylelint 'src/scss/**/*.scss' --config"
   },
   "browserslist": [
-    "chrome 62",
-    "edge 16",
-    "firefox 56",
-    "ios_saf 11",
-    "opera 48",
-    "safari 11"
+    "chrome 98",
+    "edge 98",
+    "firefox 98",
+    "ios_saf 15",
+    "opera 82",
+    "safari 15"
   ],
   "repository": {
     "type": "git",

@@ -39,9 +39,26 @@ export default {
         terser({
           ecma: 2020,
           keep_fnames: false,
-          mangle_props: true,
           mangle: {
             toplevel: true,
+          },
+          output: { quote_style: 1 }
+        })
+      ]
+    },
+    {
+      file: pkg.bundle,
+      format: "umd",
+      name: 'SuperSimpleModal',
+      sourcemap: devMode ? 'inline' : false,
+      plugins: [
+        terser({
+          ecma: 2020,
+          mangle: true,
+          compress: {
+            module: false,
+            drop_console: !devMode,
+            drop_debugger: !devMode
           },
           output: { quote_style: 1 }
         })
