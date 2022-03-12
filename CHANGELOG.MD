@@ -1,4 +1,4 @@
-## Animations - [1.1.1] [Patch]
+## Readme, Browser Support, UMD - [1.1.1] [Patch]
 
 * **Improvement** - *Improved Readme*
 * **Improvement** - *Updated css browser support*
