@@ -4,6 +4,26 @@
 
 Super Simple Modals is a small Vanilla JavaScript library that does what it says on the tin. Allow you to create pop-up modals on your website in no time, with a tiny amount of code.
 
+## Browser Support
+
+![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/main/src/safari/safari_48x48.png) | ![Opera](https://raw.github.com/alrra/browser-logos/main/src/opera/opera_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/main/src/edge/edge_48x48.png) | 
+--- | --- | --- | --- | --- |
+Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ | Latest ✔ |
+
+## Installing
+
+Using npm:
+
+```bash
+$ npm install super-simple-modals
+```
+
+Using yarn:
+
+```bash
+$ yarn add super-simple-modals
+```
+
 ## Objectives
 
 This package aims to be:
