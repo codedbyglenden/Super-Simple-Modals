@@ -1,3 +1,12 @@
+## Global var update, readme bump - [1.1.2] [Patch]
+
+* **Improvement** - *Improved Readme*
+* **Bugfix** - *Fixed bug with global vars*
+
+**Release Date:** 12/02/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## Readme, Browser Support, UMD - [1.1.1] [Patch]
 
 * **Improvement** - *Improved Readme*

@@ -24,6 +24,12 @@ Using yarn:
 $ yarn add super-simple-modals
 ```
 
+Using unpkg CDN:
+
+```html
+<script src="https://unpkg.com/super-simple-modals"></script>
+```
+
 ## Example
 
 More code examples are available in the <a target="_blank" href="https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/tree/main/examples">examples directory</a> of the Github repo.
