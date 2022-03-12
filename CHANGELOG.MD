@@ -1,3 +1,12 @@
+## Animations - [1.1.1] [Patch]
+
+* **Improvement** - *Improved Readme*
+* **Feature** - *Added UMD*
+
+**Release Date:** 12/02/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## Animations - [1.1.0] [Minor]
 
 * **Feature** - *Added basic open close animations as optional css file*
