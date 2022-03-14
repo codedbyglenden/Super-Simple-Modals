@@ -67,5 +67,6 @@
     "dist"
   ],
   "dependencies": {
+    "xss": "^1.0.11"
   }
 }

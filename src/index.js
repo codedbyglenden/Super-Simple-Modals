@@ -1,3 +1,5 @@
+import filterXSS from 'xss';
+
 /**
 * Super Simple Modal Class.
 */
@@ -82,8 +84,6 @@ class SuperSimpleModal {
 	generate({
 		title = '',
 		description = '',
-		removeText = 'Cancel',
-		addText = '',
 		mainContent = '',
 		callback = null,
 		params = {},
@@ -107,7 +107,7 @@ class SuperSimpleModal {
 		}
 
 		// If the user submits main content then wrap it in a div.
-		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${mainContent}</div>` : '';
+		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${filterXSS(mainContent)}</div>` : '';
 
 		const outputDescription = description ? `<div id="ssm-modal__description"><p>${this.strip(description)}</p></div>` : '';
 
