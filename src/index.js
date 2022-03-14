@@ -132,7 +132,7 @@ class SuperSimpleModal {
 				${postContent}
 
 				<div class="ssm-modal-buttons is-flex">
-					${buttons}
+					${filterXSS(buttons)}
 				</div>
 			</div>
 		</div>`;
