@@ -1,4 +1,4 @@
-import filterXSS from 'xss';
+import {filterXSS} from 'xss';
 
 /**
 * Super Simple Modal Class.
