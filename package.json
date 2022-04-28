@@ -1,6 +1,6 @@
 {
   "name": "super-simple-modals",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A simple modal package created in vanilla JavaScript.",
   "main": "dist/ssm.min.js",
   "module": "dist/ssm.esm.js",

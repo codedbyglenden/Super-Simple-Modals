@@ -1,3 +1,11 @@
+## Patch close button on esm file - [1.2.1] [Patch]
+
+* **Bugfix** - *Close button now works on esm file*
+
+**Release Date:** 28/04/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## XSS Filters, close icon, conditional buttons - [1.2.0] [Minor]
 
 * **Feature** - *Added close icon in the top right corner*
