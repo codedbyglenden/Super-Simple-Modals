@@ -1,3 +1,14 @@
+## XSS Filters, close icon, conditional buttons - [1.2.0] [Minor]
+
+* **Feature** - *Added close icon in the top right corner*
+* **Improvement** - *Buttons are now conditional*
+* **Improvement** - *section containers are now conditional*
+* **Improvement** - *Added xss filter for all content*
+
+**Release Date:** 28/04/2022
+**Release Author:** TheOneAndOnlyZulu
+
+
 ## Global var update, readme bump - [1.1.2] [Patch]
 
 * **Improvement** - *Improved Readme*
