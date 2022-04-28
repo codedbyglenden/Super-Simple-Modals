@@ -48,4 +48,12 @@
 			margin-right: 16px;
 		}
 	}
+
+	&-remove {
+		width: 32px;
+		position: absolute;
+		right: 32px;
+		top: 8px;
+		cursor: pointer;
+	}
 }
