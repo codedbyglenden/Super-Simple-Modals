@@ -1,4 +1,4 @@
-name: ES & SCSS Lint
+name: JS & Style Lint
 
 on:
   pull_request:

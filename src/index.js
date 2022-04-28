@@ -1,3 +1,5 @@
+import filterXSS from 'xss';
+
 /**
 * Super Simple Modal Class.
 */
@@ -7,10 +9,35 @@ class SuperSimpleModal {
 	 * Set-up initial global vars.
 	 */
 	constructor() {
-		this.focusableElements = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
-		this.willAnimate = false;
-		this.animationTimeout = 1;
+		this.focusableEl = 'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])';
+		this.willAnim = false;
+		this.animTime = 300;
 		this.initiatorButton = null;
+		this.allowedAttr = ['aria-label', 'id', 'class', 'title'];
+		this.btns = [
+			{
+				'type': 'button',
+				'text': 'Cancel',
+				'attr': {
+					'aria-label': 'Close modal',
+					'id': 'ssm-modal__na',
+					'class': 'btn',
+					'title': 'Close modal'
+				}
+			},
+			{
+				'type': 'button',
+				'text': 'Accept',
+				'attr': {
+					'aria-label': 'Close modal',
+					'id': 'ssm-modal__pa',
+					'class': 'btn',
+					'title': 'Accept & close modal'
+				}
+			}
+		];
+
+        this.removeIcon = '<svg id="ssm-remove-icon" class="ssm-modal-remove" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path id="ssm-remove-icon-path" fill="#fff" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"/></svg>';
 	}
 
 	/**
@@ -22,7 +49,7 @@ class SuperSimpleModal {
 		try {
 			var doc = document.implementation.createDocument('http://www.w3.org/1999/xhtml', 'html', null);
 			doc.documentElement.innerHTML = html;
-			return doc.documentElement.textContent||doc.documentElement.innerText;
+			return doc.documentElement.textContent || doc.documentElement.innerText;
 		} catch(e) {
 			return '';
 		}		
@@ -37,11 +64,11 @@ class SuperSimpleModal {
 
 		if ( modal ) {
 
-			if ( true === this.willAnimate ) {
+			if ( true === this.willAnim ) {
 
 				modal.setAttribute( 'aria-hidden', true );
 
-				await new Promise(resolve => setTimeout(resolve, this.animationTimeout));
+				await new Promise(resolve => setTimeout(resolve, this.animTime));
 			}
 			
 			modal.remove();
@@ -59,14 +86,13 @@ class SuperSimpleModal {
 	generate({
 		title = '',
 		description = '',
-		removeText = 'Cancel',
-		addText = '',
 		mainContent = '',
 		callback = null,
 		params = {},
 		initiatorButton = null,
-		willAnimate = false,
-		animationTimeout = 300,
+		willAnimate = this.willAnim,
+		animationTimeout = this.animTime,
+		buttons = this.btns
 	} ) {
 
 		if ( initiatorButton ) {
@@ -75,17 +101,19 @@ class SuperSimpleModal {
 		}
 
 		if ( animationTimeout ) {
-			this.animationTimeout = animationTimeout;
+			this.animTime = animationTimeout;
 		}
 
 		if ( willAnimate ) {
-			this.willAnimate = willAnimate;
+			this.willAnim = willAnimate;
 		}
 
 		// If the user submits main content then wrap it in a div.
-		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${mainContent}</div>` : '';
+		const postContent = mainContent ? `<div id="content" class="ssm-modal__content">${filterXSS(mainContent)}</div>` : '';
 
 		const outputDescription = description ? `<div id="ssm-modal__description"><p>${this.strip(description)}</p></div>` : '';
+
+		buttons = this.constructBtns( buttons );
 
 		// Base modal markup.
 		const modal =  `
@@ -98,25 +126,16 @@ class SuperSimpleModal {
     		aria-describedby="ssm-modal__description"
 			aria-hidden="false"
 		>
+            ${this.removeIcon}
+
 			<div class="ssm-modal__container">
-				<h3 id="ssm-modal__title">${this.strip(title)}</h3>
+				${title ? `<h3 id="ssm-modal__title">${this.strip(title)}</h3>` : ''}
 
 				${outputDescription}
 
 				${postContent}
 
-				<div class="ssm-modal-buttons is-flex">
-					<button
-						id="ssm-modal__close"
-						aria-label="Close"
-						class="btn btn--preview"
-						title="Close modal"
-					>${this.strip(removeText)}</button>
-					<button
-						id="ssm-modal__do_it"
-						class="btn btn--fill"
-					>${this.strip(addText)}</button>
-				</div>
+				${buttons && `<div class="ssm-modal-buttons is-flex">${filterXSS(buttons)}</div>`}
 			</div>
 		</div>`;
 
@@ -127,11 +146,13 @@ class SuperSimpleModal {
 		this.initiateFocusTrap( 'ssm-modal' );
 
 		// Add the cancel modal open action.
-		document.getElementById( 'ssm-modal__close' ).addEventListener( 'click', () => this.remove() );
-
+        if ( document.getElementById( 'ssm-modal__na' ) ) {
+            document.getElementById( 'ssm-modal__na' ).addEventListener( 'click', () => this.remove() );
+        }
+		
 		// Remove the modal if they click the grey area.
 		document.getElementById( 'ssm-modal' ).addEventListener( 'click', (e) => {
-			if ( 'ssm-modal' === e.target.getAttribute('id') ) {
+			if ( ['ssm-modal', 'ssm-remove-icon', 'ssm-remove-icon-path'].includes( e.target.getAttribute('id') ) ) {
 				this.remove();
 			}
 		});
@@ -149,10 +170,42 @@ class SuperSimpleModal {
 
 		// Add the continue with this action callback.
 		if ( callback ) {
-			document.getElementById( 'ssm-modal__do_it' ).addEventListener( 'click', () => {
+			document.getElementById( 'ssm-modal__pa' ).addEventListener( 'click', () => {
 				callback( params );
 			});
 		}
+	}
+
+	/**
+	 * Construct buttons
+	 * @param {array} buttonArray An array of parameters to create buttons.
+	 * 
+	 * @returns {string} btnMarkup A string of buttons.
+	 */
+	constructBtns( buttons = [] ) {
+
+		let btnMarkup = '';
+
+		buttons.forEach(btn => {
+			const btnType = 'button' === btn.type ? 'button' : 'a';
+			let attributes = '';
+
+			// Loops the attributes, and add white listed.
+			Object.entries(btn.attr).map(([key, attribute]) => {
+				if ( this.allowedAttr.includes(key) ) {
+					attributes += ` ${key}="${ this.strip( attribute )}"`;
+				}
+			});
+
+			// Construct button.
+			const button = `<${btnType} ${attributes}>${btn.text}</${btnType}>`;
+
+			// Adds button to btn markup.
+			btnMarkup += button;
+		});
+
+		// Return the string of constructed markup.
+		return btnMarkup;
 	}
 
 	/**
@@ -166,18 +219,20 @@ class SuperSimpleModal {
 
 		// Get all of the child items that can be tabbed to.
 		const selectableItems = parentContainer.querySelectorAll(
-			this.focusableElements
+			this.focusableEl
 		);
 
 		// The first & last item in the list so we can skip to them at the start/end of the trap.
 		const firstFocusableEl = selectableItems[0];
 		const lastFocusableEl = selectableItems[ selectableItems.length - 1 ];
 
-		// Focus the first focusable item.
-		firstFocusableEl.focus();
+		if ( firstFocusableEl ) {
+            // Focus the first focusable item.
+            firstFocusableEl.focus();
+        }
 
 		// Add a keydown event listener to the modal.
-		parentContainer.addEventListener('keydown', function(e) {
+		parentContainer.addEventListener('keydown', (e) => {
 
 			// If the user clicks the tab key.
 			if (e.key === 'Tab' || e.keyCode === 9) {
