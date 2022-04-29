@@ -1,4 +1,6 @@
 <img alt="GitHub package.json version (subfolder of monorepo)" src="https://img.shields.io/github/package-json/v/TheOneAndOnlyZulu/Super-Simple-Modals"> <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/super-simple-modals" /> <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/minzip/super-simple-modals" />
+[![JS & Style Lint](https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/actions/workflows/eslint.yml/badge.svg)](https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/actions/workflows/eslint.yml)
+[![CodeQL](https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/TheOneAndOnlyZulu/Super-Simple-Modals/actions/workflows/codeql-analysis.yml)
 
 # About Super Simple Modals
 
